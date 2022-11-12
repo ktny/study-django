@@ -1,0 +1,34 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/docker-existing-dockerfile
+{
+  "name": "study-django",
+  "dockerComposeFile": "../compose.yml",
+  "service": "app",
+  "workspaceFolder": "/opt",
+  "runServices": ["app"],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "ms-python.python",
+    "python.languageServer": "Pylance",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.flake8Args": ["--ignore=E501"],
+    "python.linting.lintOnSave": true
+  },
+  "extensions": [
+    "VisualStudioExptTeam.vscodeintellicode",
+    "ms-python.python",
+    "PhilHindle.errorlens"
+  ],
+  "features": {
+    "git": {
+      "version": "latest"
+    }
+  }
+}
