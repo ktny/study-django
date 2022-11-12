@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/src
+    ports:
+      - 8000:8000
+
+  # db:
+  #   image:
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql
+# volumes:
+#   pg_data:
