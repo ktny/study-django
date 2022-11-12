@@ -1,13 +1,8 @@
 FROM python:3.11.0-bullseye
 ENV PYTHONBUFFERED=1
 
-WORKDIR /src
+COPY mysite/pyproject.toml* mysite/poetry.lock* ./
 
 RUN pip install poetry
-
-COPY pyproject.toml* poetry.lock* ./
-
 RUN poetry config virtualenvs.in-project true
-RUN if [ -f pyproject.toml ]; then poetry install; fi
-
-ENTRYPOINT ["python", "manage.py", "runserver"]
+RUN poetry install
