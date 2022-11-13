@@ -1,3 +1,4 @@
+import asyncio
 import time
 
 from django.http import HttpResponse
@@ -14,6 +15,10 @@ async def index(request):
 
 
 async def hello(request):
-    time.sleep(5)
-
+    task = asyncio.create_task(sleep())
+    await task
     return HttpResponse("Hello world")
+
+
+async def sleep():
+    await asyncio.sleep(3)
