@@ -1,4 +1,9 @@
 #!/bin/bash
 
 poetry run python manage.py migrate
-poetry run python manage.py runserver 0.0.0.0:8000
+
+# wsgiref (django-admin runserver)
+# poetry run python manage.py runserver 0.0.0.0:8000
+
+# gunicorn
+poetry run gunicorn --bind 0.0.0.0:8000 --workers 1 mysite.wsgi

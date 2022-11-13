@@ -8,6 +8,7 @@ authors = ["ktny <katsunori.t10@gmail.com>"]
 python = "^3.11"
 Django = "^4.1.3"
 psycopg2 = "^2.9.5"
+gunicorn = "^20.1.0"
 
 [tool.poetry.dev-dependencies]
 
