@@ -3,6 +3,8 @@ import time
 
 from django.http import HttpResponse
 
+# from .models import Choice
+
 # def index(request):
 #     # time.sleep(5)
 #     return HttpResponse("Hello world")
@@ -10,6 +12,11 @@ from django.http import HttpResponse
 
 async def index(request):
     # time.sleep(5)
+
+    # choice = Choice.objects.first()
+    # assert choice
+    # ans = choice.votes + 1
+    # print(ans)
 
     return HttpResponse("Polls index")
 
