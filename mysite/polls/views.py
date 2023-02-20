@@ -1,22 +1,30 @@
 import asyncio
-import time
 
 from django.http import HttpResponse
 
-# from .models import Choice
+from .models import Choice
+
+# import time
+
 
 # def index(request):
 #     # time.sleep(5)
 #     return HttpResponse("Hello world")
 
 
+def arerare(a: int, b: int) -> int:
+    return a + b
+
+
 async def index(request):
     # time.sleep(5)
 
-    # choice = Choice.objects.first()
-    # assert choice
-    # ans = choice.votes + 1
-    # print(ans)
+    choice = Choice.objects.first()
+    assert choice
+    ans = choice.votes + 1
+    ans = "aaa"
+
+    print(ans)
 
     return HttpResponse("Polls index")
 
