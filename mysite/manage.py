@@ -3,8 +3,13 @@
 import os
 import sys
 
+import mysite.settings as settings
+
 
 def main():
+
+    settings.ALLOWED_HOSTS
+
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
     try:

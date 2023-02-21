@@ -20,7 +20,7 @@ django-stubs = {extras = ["compatible-mypy"], version = "^1.14.0"}
 
 [tool.black]
 line-length = 120
-target-version = ['py37', "py38", "py39", "py310"]
+target-version = ["py311"]
 include = '\.pyi?$'
 exclude = '''
 (
@@ -48,7 +48,6 @@ exclude = '''
 profile = "black"
 
 [tool.mypy]
-mypy_path = $MYPY_CONFIG_FILE_DIR
 plugins = ["mypy_django_plugin.main"]
 
 [tool.django-stubs]
