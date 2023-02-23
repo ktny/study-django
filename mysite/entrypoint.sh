@@ -3,6 +3,9 @@ set -euo --pipefail
 
 python manage.py migrate
 
+# 管理画面用の静的ファイルをmysite配下に集める
+python manage.py collectstatic --noinput
+
 # wsgiref (django-admin runserver)
 # python manage.py runserver 0.0.0.0:8000
 

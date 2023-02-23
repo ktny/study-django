@@ -19,12 +19,12 @@ def arerare(a: int, b: int) -> int:
 async def index(request):
     # time.sleep(5)
 
-    choice = Choice.objects.first()
-    assert choice
-    ans = choice.votes + 1
-    ans = "aaa"
+    # choice = Choice.objects.first()
+    # assert choice
+    # ans = choice.votes + 1
+    # ans = "aaa"
 
-    print(ans)
+    # print(ans)
 
     return HttpResponse("Polls index")
 
