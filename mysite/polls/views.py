@@ -1,32 +1,25 @@
 import asyncio
 
+from asgiref.sync import sync_to_async
+from django.core import serializers
 from django.http import HttpResponse
 
-from .models import Choice
-
-# import time
-
-
-# def index(request):
-#     # time.sleep(5)
-#     return HttpResponse("Hello world")
-
-
-def arerare(a: int, b: int) -> int:
-    return a + b
+from .models import Choice, Question
 
 
 async def index(request):
-    # time.sleep(5)
-
-    # choice = Choice.objects.first()
-    # assert choice
-    # ans = choice.votes + 1
-    # ans = "aaa"
-
-    # print(ans)
-
     return HttpResponse("Polls index")
+
+
+async def list(request):
+    questions = []
+    async for question in Question.objects.all():
+        questions.append(question)
+
+    return HttpResponse(
+        serializers.serialize("json", questions),
+        content_type="application/json; charset=utf-8",
+    )
 
 
 async def hello(request):
