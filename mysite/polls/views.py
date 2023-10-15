@@ -1,28 +1,40 @@
 import asyncio
+from logging import getLogger
 
 from adrf.decorators import api_view
-from asgiref.sync import sync_to_async
-from django.core import serializers
+
+# from asgiref.sync import sync_to_async
+from django.db import transaction
 from django.http import HttpRequest, HttpResponse
 
-from .models import Choice, Question
+from .database import get_data_from_asyncpg
+from .models import Question
 
-# from rest_framework.decorators import api_view
+logger = getLogger(__name__)
 
 
 async def index(request: HttpRequest):
     return HttpResponse("Polls index")
 
 
-async def list(request: HttpRequest):
-    questions = []
-    async for question in Question.objects.all():
-        questions.append(question)
+@transaction.non_atomic_requests
+@api_view(["GET"])
+async def polls(request: HttpRequest):
+    logger.info("start polls")
 
-    return HttpResponse(
-        serializers.serialize("json", questions),
-        content_type="application/json; charset=utf-8",
-    )
+    # asyncpgを使用してraw sqlでDBのI/O待ちで並行処理を行えることを確認する
+    result = await get_data_from_asyncpg()
+
+    # django ormのネイティブなacountなどのメソッドでDBのI/O待ちで並行処理が行えることを確認する
+    # result = await get_data_from_django_orm()
+    return HttpResponse(result, content_type="application/json; charset=utf-8")
+
+
+async def get_data_from_django_orm():
+    logger.info("start get_count")
+    c = await Question.objects.acount()
+    await asyncio.sleep(1.0)
+    return c
 
 
 async def hello(request: HttpRequest):

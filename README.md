@@ -15,3 +15,11 @@ python manage.py createsuperuser
 # localhost:8000/: top page
 # localhost:8000/admin/: admin site
 ```
+
+# 計測
+
+以下で並行処理が行えていることを確認できる
+
+```sh
+time ./time.sh
+```

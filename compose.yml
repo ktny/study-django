@@ -4,6 +4,8 @@ services:
   app:
     build: .
     restart: always
+    environment:
+      - PYTHONIOENCODING=utf-8
     volumes:
       - ./mysite:/opt
     ports:

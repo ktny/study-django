@@ -13,4 +13,4 @@ python manage.py collectstatic --noinput
 # poetry run gunicorn --bind 0.0.0.0:8000 --workers 1 mysite.wsgi:application
 
 # uvicorn
-poetry run uvicorn --host 0.0.0.0 --port 8000 --workers 1 mysite.asgi:application
+poetry run uvicorn --host 0.0.0.0 --port 8000 --workers 1 --timeout-keep-alive 600 mysite.asgi:application
